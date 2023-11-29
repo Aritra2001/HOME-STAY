@@ -81,7 +81,7 @@ const Signup = () => {
         <a href="/"><img src={Login_img} alt="Logo" className='w-[514px] h-[546px] mt-40 ml-auto md:w-auto h-auto inline-flex overflow-x-auto overflow-y-auto'/></a>
         <p className="text-white text-[15px] font-semibold font-['Poppins'] leading-[17.62px] mt-10">Meet the guide for your smooth society experience</p>
     </div>
-    <div className='w-[556px] h-[825px] bg-white rounded-[14px] xl:border border-zinc-400 ml-10 justify-center items-center flex-box max-sm:mt-[-10vh] max-sm:mx-auto'>
+    <div className='w-[556px] h-[825px] bg-white rounded-[14px] xl:border border-zinc-400 ml-10 justify-center items-center flex-box max-sm:mt-[-20vh] max-sm:mx-auto'>
             <a href='/'><img src={Logo} alt="Logo" className='mt-20 mx-auto flex cursor-pointer'/></a>
             <p className="text-black text-[42px] font-normal font-['Lexend'] mt-10 items-center justify-center flex">Welcome👋</p>
             <Toggle />
