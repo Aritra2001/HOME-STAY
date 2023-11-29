@@ -29,13 +29,6 @@ app.use(cors({
 }))
 
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://www.smartmaintenance.in");
-    res.sendStatus(204);
-    next()
-})
-
-
 //routes
 app.use('/api/users', userRoutes)
 
