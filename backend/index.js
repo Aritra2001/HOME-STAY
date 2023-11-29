@@ -11,20 +11,22 @@ const app = express()
 app.use(express.json())
 
 //cors
+const allowedOrigins = [
+    "https://www.smartmaintenance.in/", "https://home-stay-frontend-git-main-aritra2001.vercel.app/", "https://home-stay-frontend-hs9lf1udw-aritra2001.vercel.app/"
+
+];
 
 app.use(cors({
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204
+    origin:function(origin,callback){
+        if(allowedOrigins.indexOf(origin)!== -1 || !origin){
+            callback(null,true);
+        }
+        else{
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials:true,
 }))
-
-app.use((req, res, next) => {
-    console.log(req.path, req.method)
-    next()
-})
-
-
 
 //routes
 app.use('/api/users', userRoutes)
