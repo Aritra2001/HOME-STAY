@@ -5,6 +5,7 @@ const validator = require('validator')
 const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
+const fs = require('fs')
 const { Resend } = require("resend");
 
 const createToken = function (_id) {
@@ -74,36 +75,14 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
     const hash = await bcrypt.hash(password, salt)
 
     const user = await this.create({email, password: hash})
+    const htmlstream = fs.createReadStream('../signup.html')
 
     
     await instanceResend.emails.send({
         from: 'noreply@smartmaintenance.in',
         to: user.email,
         subject: 'Verify Your Email Address',
-        html: `<p>Thank you for signing up with Home stay.<strong> Use the button below to verify your email.</strong></p>
-        <!-- Action -->
-        <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-          <tr>
-            <td align="center">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td align="center">
-                    <table border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td>
-                        <a href='https://www.google.com'><button type='button' target="_blank" style="background:rgb(13 148 136);width:12rem;height:2rem;border-radius:5px;color:white;font-weight:bold;text-decoration:none;padding:6px;">Verify Email</button></a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-        <p>If you did not request a signup, please ignore this email.</p>
-        <p>Thanks,
-          <br>The Home Stay Team</p>`
+        html: htmlstream
       });
 
     return user
