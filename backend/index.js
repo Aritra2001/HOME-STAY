@@ -9,7 +9,7 @@ const app = express()
 
 //cors
 const allowedOrigins = [
-    "https://www.smartmaintenance.in",
+    "https://www.smartmaintenance.in/:",
 
 ];
 
