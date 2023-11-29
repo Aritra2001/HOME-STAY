@@ -30,7 +30,7 @@ const Signup = () => {
   const notify = () => {
     
     if(json.hasOwnProperty('_id') === true) {
-      toast.success('Login Sucessfull!')
+      toast.success('Verification mail sent Sucessfull!')
     }
     else {
       toast.error(json.error)
@@ -66,7 +66,6 @@ const Signup = () => {
         setPassword('')
         setConfirmPassword('')
         console.log('Successfull Signup!')
-        navigate('/')
       } catch(e) {
         throw new Error(e)
       }
