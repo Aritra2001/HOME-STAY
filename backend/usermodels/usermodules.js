@@ -91,7 +91,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>
-                        <a href='https://www.google.com'><button type='button' target="_blank" style="background: rgb(13 148 136); width: 12rem ; height: 2rem; border-radius: 5px; color: white; font-weight: bold; text-decoration: none; padding: 6px">Verify Email</button></a>
+                        <a href='https://www.google.com'><button type='button' target="_blank" style="background:rgb(13 148 136);width:12rem;height:2rem;border-radius:5px;color:white;font-weight:bold;text-decoration:none;padding:6px;">Verify Email</button></a>
                         </td>
                       </tr>
                     </table>
