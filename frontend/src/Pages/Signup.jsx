@@ -85,19 +85,19 @@ const Signup = () => {
             <a href='/'><img src={Logo} alt="Logo" className='mt-20 mx-auto flex cursor-pointer'/></a>
             <p className="text-black text-[42px] font-normal font-['Lexend'] mt-10 items-center justify-center flex">Welcome👋</p>
             <Toggle />
-            <input type="email" placeholder='Enter your Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} aria-label='your email' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[8vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold" required > 
+            <input type="email" placeholder='Enter your Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} aria-label='your email' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[8vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold max-sm:w-[320px]" required > 
             </input>
             <div className='w-[1px] h-[35.858px] border border-neutral-200 ml-[7.5rem] mt-[-6.8vh] absolute max-sm:mx-[47px] max-md:mx-[47px] max-lg:mx-[47px]'></div>
             <IconContext.Provider value={{ className: 'absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px]  max-xl:mx-[17px]', size: 20 }}>
             <FaRegEnvelope color='#A0A0A0'/>
             </IconContext.Provider>
-            <input placeholder='Enter your Password' id='password' value={password} autoComplete="current-password" type={showPassword ? 'text' : 'password'} onChange={(e)=>setPassword(e.target.value)} onCopy={(e) => e.preventDefault()} aria-label='your password'className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[5vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold" required>
+            <input placeholder='Enter your Password' id='password' value={password} autoComplete="current-password" type={showPassword ? 'text' : 'password'} onChange={(e)=>setPassword(e.target.value)} onCopy={(e) => e.preventDefault()} aria-label='your password'className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[5vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold max-sm:w-[320px]" required>
             </input>
             <div className='w-[1px] h-[35.858px] border border-neutral-200 ml-[7.5rem] mt-[-6.8vh] absolute max-sm:mx-[47px] max-md:mx-[47px] max-lg:mx-[47px] max-xl:mx-[47px]'></div>
             <IconContext.Provider value={{ className: 'absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px] max-xl:mx-[17px] max-xl:mx-[47px]', size: 20 }}>
             {!showPassword ? <FaRegEyeSlash onClick={togglePasswordVisibility} color='#A0A0A0'/> : <FaRegEye onClick={togglePasswordVisibility} color='#A0A0A0'/>}
             </IconContext.Provider>
-            <input placeholder='Confirm your Password' id='password' value={confirmpassword} autoComplete="current-password" type={showconfirmPassword ? 'text' : 'password'} onChange={(e)=>setConfirmPassword(e.target.value)} onPaste={(e) => e.preventDefault()} aria-label='confirm password'className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[5vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold" required>
+            <input placeholder='Confirm your Password' id='password' value={confirmpassword} autoComplete="current-password" type={showconfirmPassword ? 'text' : 'password'} onChange={(e)=>setConfirmPassword(e.target.value)} onPaste={(e) => e.preventDefault()} aria-label='confirm password'className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[5vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold max-sm:w-[320px]" required>
             </input>
             <div className='w-[1px] h-[35.858px] border border-neutral-200 ml-[7.5rem] mt-[-6.8vh] absolute max-sm:mx-[47px] max-md:mx-[47px] max-lg:mx-[47px] max-xl:mx-[47px]'></div>
             <IconContext.Provider value={{ className: 'absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px] max-xl:mx-[17px] max-xl:mx-[47px]', size: 20 }}>

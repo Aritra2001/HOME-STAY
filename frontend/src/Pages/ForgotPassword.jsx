@@ -58,7 +58,7 @@ export const ForgotPassword = () => {
   }
 
   return (
-    <div className='w-full h-screen bg-emerald-50 justify-start items-center inline-flex'>
+    <div className='w-full h-screen bg-white justify-start items-center inline-flex'>
       <div className='w-[650px] h-fit rounded-[14px] ml-[96px] flex shrink-1 hidden sm:block md:block'>
         <img src={Forgot} alt="Forgot password" />
       </div>
