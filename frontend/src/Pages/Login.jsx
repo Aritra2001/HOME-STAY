@@ -39,7 +39,7 @@ const Login = () => {
 
     const login = {email, password}
 
-    const response = await fetch('http://localhost:3333/api/users/login', {
+    const response = await fetch('https://home-stay-delta.vercel.app/api/users/login', {
 
       method: 'POST',
       body: JSON.stringify(login),

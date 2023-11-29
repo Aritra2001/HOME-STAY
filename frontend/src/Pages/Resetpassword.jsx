@@ -48,7 +48,7 @@ const Resetpassword = () => {
     const resetpassword = { password, confirmpassword }
 
     const token = getToken()
-    const response = await fetch(`http://localhost:3333/api/users/reset-password/${token}`, {
+    const response = await fetch(`https://home-stay-delta.vercel.app/api/users/reset-password/${token}`, {
 
     method: 'POST',
     body: JSON.stringify(resetpassword),
