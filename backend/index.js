@@ -10,15 +10,15 @@ const app = express()
 //middleware
 app.use(express.json())
 
-//cors
-app.use(cors({}))
-
 app.options("/", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "https://www.smartmaintence.in");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.sendStatus(204);
   });
+
+//cors
+app.use(cors({}))
 
 //routes
 app.use('/api/users', userRoutes)
