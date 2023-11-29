@@ -62,8 +62,8 @@ export const ForgotPassword = () => {
       <div className='w-[650px] h-fit rounded-[14px] ml-[96px] flex shrink-1 hidden sm:block md:block'>
         <img src={Forgot} alt="Forgot password" />
       </div>
-      <div className='flex justify-center items-center flex-col m-auto mt-[8rem]'>
-        <div className="h-fit text-black text-[45px] font-semibold font-['Poppins'] flex-box max-sm:text-[40px] m-auto max-md:text-[40px]">Forgot Your Password?</div>
+      <div className='flex justify-center items-center flex-col m-auto mt-[8rem] max-sm:mx-auto'>
+        <div className="h-fit text-black text-[45px] font-semibold font-['Poppins'] flex-box max-sm:text-[40px] m-auto max-md:text-[40px] max-sm:text-[36px]">Forgot Your Password?</div>
         <p className="h-fit text-center text-black text-[15px] font-normal font-['Poppins'] flex m-auto mt-[2rem]">Enter your email to receive the reset password link in<br/> your registered mail.</p>
         <input type="email" placeholder='Enter your Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)} aria-label='your email' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[8vh] indent-[4.5rem] placeholder-text-slate-500 placeholder:font-medium  text-[13px] font-normal font-['Poppins'] font-bold" required > 
         </input>
