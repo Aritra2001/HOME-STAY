@@ -42,7 +42,6 @@ const Login = () => {
     const response = await fetch('https://home-stay-delta.vercel.app/api/users/login', {
 
       method: 'POST',
-      mode: 'no-cors',
       body: JSON.stringify(login),
       headers : {
         'Content-Type': 'application/json'
