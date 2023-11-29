@@ -11,20 +11,14 @@ const app = express()
 app.use(express.json())
 
 //cors
-const allowedOrigins = [
-    "https://www.smartmaintence.in",
-
-];
-
 app.use(cors({}))
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method)
+app.options("/", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "https://www.smartmaintence.in");
-    res.setHeader("Access-Control-Allow-Methods", "POST");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    next()
-})
+    res.sendStatus(204);
+  });
 
 //routes
 app.use('/api/users', userRoutes)
