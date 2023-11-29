@@ -1,0 +1,39 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@700&family=Patrick+Hand+SC&family=Poppins:wght@600&display=swap');
+ul {
+    position: relative;
+    padding: 0.5rem;
+    list-style-type: none;
+}
+ul li {
+    position: relative;
+    display: inline;
+    padding: 3rem;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.switch {
+    position: relative;
+    margin-left: -4.7rem;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+ul li div {
+    position: relative;
+    display: inline;
+    padding-top: 9px;
+    padding-bottom: 8px;
+    width: 120px;
+    height: 35px;
+    border-radius: 9px;
+    color: #A0A0A0;
+}
+
