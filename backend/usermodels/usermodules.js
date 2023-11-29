@@ -152,7 +152,7 @@ userSchema.statics.finduser = async function(email) {
         await this.findByIdAndUpdate(usr._id, {passwordResetToken: hash_token, passwordResetTokenExpire: Date.now() + 10 * 60 * 1000})
 
         //mail send 
-        const link = `http://localhost:3000/resetpassword/${token}`
+        const link = `https://www.smartmaintenance.in/resetpassword/${token}`
 
 
         await instanceResend.emails.send({
