@@ -16,22 +16,12 @@ const allowedOrigins = [
 
 ];
 
-app.use(cors({
-    origin:function(origin,callback){
-        if(allowedOrigins.indexOf(origin)!== -1 || !origin){
-            callback(null,true);
-        }
-        else{
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials:true,
-}))
+app.use(cors({}))
 
 app.use((req, res, next) => {
     console.log(req.path, req.method)
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "*");
+    res.setHeader("Access-Control-Allow-Origin", "https://www.smartmaintence.in");
+    res.setHeader("Access-Control-Allow-Methods", "POST");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     next()
 })
