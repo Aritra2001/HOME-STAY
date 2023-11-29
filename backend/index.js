@@ -12,7 +12,7 @@ app.use(express.json())
 
 //cors
 const allowedOrigins = [
-    "http://localhost:3000",
+    "https://www.smartmaintenance.in/",
 
 ];
 
