@@ -16,7 +16,9 @@ app.use((req, res, next) => {
 })
 
 //cors
-app.use(cors({}))
+app.use(cors({
+    origin: '*'
+}))
 
 //routes
 app.use('/api/users', userRoutes)
