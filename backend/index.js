@@ -17,15 +17,7 @@ app.use((req, res, next) => {
 
 //cors
 app.use(cors({
-    origin:function(origin,callback){
-        if(allowedOrigins.indexOf(origin)!== -1 || !origin){
-            callback(null,true);
-        }
-        else{
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials:true,
+    origin: 'https://home-stay-delta.vercel.app/'
 }))
 
 //routes
