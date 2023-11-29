@@ -29,7 +29,7 @@ const Signup = () => {
   }
   const notify = () => {
     
-    if(json.hasOwnProperty('_id') === true) {
+    if(json.hasOwnProperty('token') === true) {
       toast.success('Verification mail sent Sucessfull!')
     }
     else {
