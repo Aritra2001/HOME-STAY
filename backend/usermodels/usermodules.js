@@ -2,7 +2,6 @@ require('dotenv').config
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
-const nodemailer = require('nodemailer')
 const jwt = require('jsonwebtoken')
 const crypto = require('crypto')
 const { Resend } = require("resend");
@@ -12,8 +11,7 @@ const createToken = function (_id) {
 }
 
 // Send an email:
-const instanceResend = new Resend(process.env.KEY_RESEND);
-
+const instanceResend = new Resend(process.env.RESEND_API_KEY);
 
 const Schema =  mongoose.Schema
 
@@ -80,33 +78,33 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
         from: 'noreply@smartmaintenance.in',
         to: user.email,
         subject: 'Verify Your Email Address',
-        html: `<p>Thank you for signing up with Home stay.<strong> Use the button below to verify your email.</strong></p>
-        <!-- Action -->
-        <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-          <tr>
-            <td align="center">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td align="center">
-                    <table border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td>
-                        <a href='https://www.google.com'><button type='button' target="_blank" style="background: rgb(13 148 136); width: 12rem ; height: 2rem; border-radius: 5px; color: white; font-weight: bold; text-decoration: none; padding: 6px">Verify Email</button></a>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
+        html: `<html>
+        <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        </head>
+        <body style="font-family: 'Poppins', sans-serif; font-size: 16px;">
+        <div>
+        <table style="width: 69.9834%;" role="presentation" border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+        <tbody>
+        <tr>
+        <td style="width: 100%;">
+        <p><span>Hi User,</span></p>
+        <p><span>Welcome to your Home Stay account. Please Verify your email here:</span></p>
+        <a href="http://localhost:3000"><button style="border-radius: 7px; background: #008386; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Verify Email</button></a>
+        <p>If you have not registered, just ignore and delete this message.<br/>To keep your account secure, please don't forward this email to anyone.<br/> See our Help Center for&nbsp;<a href="https://smartmaintenance.in" target="_blank" rel="noopener">more security tips.</a></p>
+        <span><p>Happy Home Stay!</p></span>
+        </td>
+        </tr>
+        </tbody>
         </table>
-        <p>If you did not request a signup, please ignore this email.</p>
-        <p>Thanks,
-          <br>The Home Stay Team</p>`
+        </div>
+        </body>
+        </html>`
       });
 
-    return user
+      return user
 
 }
 
@@ -158,31 +156,31 @@ userSchema.statics.finduser = async function(email) {
         await instanceResend.emails.send({
             from: 'noreply@smartmaintenance.in',
             to: usr.email,
-            subject: 'Reset password',
-            html: `<p>You recently requested to reset your password for your Home stay account. Use the button below to reset it. <strong>This password reset is only valid for the next 10 minutes.</strong></p>
-            <!-- Action -->
-            <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-              <tr>
-                <td align="center">
-                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                    <tr>
-                      <td align="center">
-                        <table border="0" cellspacing="0" cellpadding="0">
-                          <tr>
-                            <td>
-                            <a href='${link}' ><button type='button' style="background: rgb(13 148 136); width: 15rem ; height: 2rem; border-radius: 5px; color: white; font-weight: bold; text-decoration: none; padding: 6px">Reset Your Password</button></a>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
+            subject: 'Home Stay Reset Password',
+            html: `<html>
+            <head>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+            </head>
+            <body style="font-family: 'Poppins', sans-serif; font-size: 16px;">
+            <div>
+            <table style="width: 69.9834%;" role="presentation" border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+            <tbody>
+            <tr>
+            <td style="width: 100%;">
+            <p><span>Hi User,</span></p>
+            <p><span>Someone recently requested a password change for your Home Stay account.<br/>If it was you, you can reset your password here:</span></p>
+            <a href="${link}"><button style="border-radius: 7px; background: #008386; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Reset Password</button></a>
+            <p>If you do not want to change your password or did not request this, just ignore and delete this message.<br/>To keep your account secure, please don't forward this email to anyone.<br/> See our Help Center for&nbsp;<a href="https://smartmaintenance.in" target="_blank" rel="noopener">more security tips.</a></p>
+            <span><p>Happy Home Stay!</p></span>
+            </td>
+            </tr>
+            </tbody>
             </table>
-            <p>If you did not request a password reset, please ignore this email.</p>
-            <p>Thanks,
-              <br>The Home Stay Team</p>`
+            </div>
+            </body>
+            </html>`
           });
 
         return token

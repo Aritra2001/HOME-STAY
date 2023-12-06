@@ -5,7 +5,6 @@ import { FaRegEnvelope, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { IconContext } from 'react-icons/lib';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from 'react-router-dom';
 import Logo from '../assets/logo.svg'
 import { useState } from 'react';
 
@@ -17,8 +16,8 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState(null)
-  const navigate = useNavigate()
   var json = '';
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
@@ -29,11 +28,11 @@ const Signup = () => {
   }
   const notify = () => {
     
-    if(json.hasOwnProperty('token') === true) {
-      toast.success('Verification mail sent Sucessfull!')
+    if(json.hasOwnProperty('token') === false) {
+      toast.error(json.error)
     }
     else {
-      toast.error(json.error)
+      toast.success('Verification Mail Send Successfully!')
     }
   }
 
