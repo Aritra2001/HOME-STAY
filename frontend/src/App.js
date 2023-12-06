@@ -25,7 +25,7 @@ function App() {
         path='/resetpassword/:token'
         element={<Resetpassword />} />
         <Route
-        path='/:token'
+        path='/signup/:token'
         element />
         <Route
         path='*'

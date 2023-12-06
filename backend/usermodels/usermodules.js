@@ -73,7 +73,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
 
     const user = await this.create({email, password: hash})
     const token  = createToken(user._id)
-    const link_verify = `https://www.smartmaintenance.in/${token}`
+    const link_verify = `https://www.smartmaintenance.in/signup/${token}`
     
     await instanceResend.emails.send({
         from: 'noreply@smartmaintenance.in',
