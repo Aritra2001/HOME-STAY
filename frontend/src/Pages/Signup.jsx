@@ -28,11 +28,11 @@ const Signup = () => {
   }
   const notify = () => {
     
-    if(json.hasOwnProperty('token') === false) {
-      toast.error(json.error)
+    if(json.user.hasOwnProperty('token') === true) {
+      toast.success('Verification Mail Send Successfully!')
     }
     else {
-      toast.success('Verification Mail Send Successfully!')
+      toast.error(json.error)
     }
   }
 
@@ -50,6 +50,7 @@ const Signup = () => {
       }
     })
     json = await response.json()
+
     notify()
     if(!response) {
       try {
