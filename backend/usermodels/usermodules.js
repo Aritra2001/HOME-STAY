@@ -73,7 +73,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
 
     const user = await this.create({email, password: hash})
     const token  = createToken(user._id)
-    const link = `https://www.smartmaintenance.in/${token}`
+    const link_verify = `https://www.smartmaintenance.in/${token}`
     
     await instanceResend.emails.send({
         from: 'noreply@smartmaintenance.in',
@@ -93,7 +93,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
         <td style="width: 100%;">
         <p><span>Hi User,</span></p>
         <p><span>Welcome to your Home Stay account. Please Verify your email here:</span></p>
-        <a href="${link}"><button style="border-radius: 7px; background: #008386; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Verify Email</button></a>
+        <a href="${link_verify}"><button style="border-radius: 7px; background: #008386; color: white; width: 10rem; height: 2rem; border: none; font-weight: bold; font-size: 16px; cursor: pointer">Verify Email</button></a>
         <p>If you have not registered, just ignore and delete this message.<br/>To keep your account secure, please don't forward this email to anyone.<br/> See our Help Center for&nbsp;<a href="https://smartmaintenance.in" target="_blank" rel="noopener">more security tips.</a></p>
         <span><p>Happy Home Stay!</p></span>
         </td>
