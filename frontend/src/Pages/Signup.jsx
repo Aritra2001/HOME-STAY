@@ -41,7 +41,7 @@ const Signup = () => {
 
     const signup = {email, password, confirmpassword}
 
-    const response = await fetch('https://home-stay-delta.vercel.app/api/users/signup', {
+    const response = await fetch('https://home-stay-beryl.vercel.app/api/users/signup', {
 
       method: 'POST',
       body: JSON.stringify(signup),
