@@ -21,7 +21,6 @@ const forgot_password = async (req, res) => {
         res.status(400).json({error: error.message})
     }
     
-
 }
 
 
@@ -78,8 +77,33 @@ const signupUser = async (req, res) => {
     
 }
 
+//verify signup user
+const verifySignup = async (req, res) => {
+
+    const { token } = req.params
+
+    try {
+        
+        const user = await User.findOne({verifyToken: token, verifyTokenExpire: {$gt: Date.now()}})
+
+        if(!user) {
+        throw Error('Token has either expired or is invalid')
+        }
+        else {
+        user.verifyToken = undefined
+        user.verifyTokenExpire = undefined
+        user.verifiedStatus = true
+        user.save()
+        }
+       res.status(200).json({user})
+    }
+    catch(error) {
+       res.status(400).json({error: error.message})
+    }
+}
 
 
 
 
-module.exports = {signupUser, loginUser, forgot_password, resetPassword}
+
+module.exports = {signupUser, loginUser, forgot_password, resetPassword, verifySignup}

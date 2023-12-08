@@ -34,6 +34,15 @@ const userSchema = new Schema({
     passwordResetTokenExpire: {
         type: Date
     },
+    verifyToken : {
+        type: String
+    },
+    verifyTokenExpire: {
+        type: Date,
+    },
+    verifiedStatus: {
+        type: Boolean
+    },
     passwordUpdateDate: {
         type: Date
     }
@@ -64,10 +73,10 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
 
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
-
-    const user = await this.create({email, password: hash, verifiedStatus: false})
-    user.verifiedStatus = false
+    
+    const user = await this.create({email, password: hash})
     const token  = createToken(user._id)
+    await this.findByIdAndUpdate(user._id, {verifyToken: token, verifyTokenExpire: Date.now() + 10 * 60 * 1000})
     const link_verify = `https://www.smartmaintenance.in/signup/${token}`
     
     await instanceResend.emails.send({
@@ -99,6 +108,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
         </body>
         </html>`
       });
+
 
       const signup = {user: user, token: token }
 
@@ -215,5 +225,6 @@ userSchema.statics.findbytoken = async function(token, password) {
     return user
 
 }
+
 
 module.exports = mongoose.model('User', userSchema)
