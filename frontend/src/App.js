@@ -5,6 +5,7 @@ import Signup from './Pages/Signup';
 import Error from './Pages/Error';
 import ForgotPassword from './Pages/ForgotPassword';
 import Resetpassword from './Pages/Resetpassword';
+import SignupVerified from './Pages/SignupVerified';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         element={<Resetpassword />} />
         <Route
         path='/signup/:token'
-        element />
+        element={<SignupVerified />} />
         <Route
         path='*'
         element={<Error />} />

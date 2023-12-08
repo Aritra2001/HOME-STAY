@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Logo from '../assets/logo.svg'
 import { useState } from 'react';
 
+export var json = '';
+
 const Signup = () => {
 
   const [email, setEmail] = useState('')
@@ -16,7 +18,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState(null)
-  var json = '';
 
 
   const togglePasswordVisibility = () => {
@@ -28,11 +29,11 @@ const Signup = () => {
   }
   const notify = () => {
     
-    if(json.user.hasOwnProperty('token') === true) {
-      toast.success('Verification Mail Send Successfully!')
+    if(json.hasOwnProperty('token') === false) {
+      toast.error(json.error)
     }
     else {
-      toast.error(json.error)
+      toast.success('Verification Mail Send Successfully!')
     }
   }
 

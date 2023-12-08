@@ -9,3 +9,14 @@
 
 
 
+.verified {
+    background: #FFF;
+    box-shadow: 8px 39px 201.7px 96px rgba(0, 0, 0, 0.25);
+    width: 1151px;
+    height: 609px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
