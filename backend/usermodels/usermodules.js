@@ -28,9 +28,6 @@ const userSchema = new Schema({
     confirmpassword: {
         type: String,
     },
-    verifiedStatus: {
-        type: String
-    },
     passwordResetToken: {
         type: String
     },
@@ -42,11 +39,9 @@ const userSchema = new Schema({
     }
 }, {timestamps: true})
 
-
 // static signup method
 userSchema.statics.signup = async function(email, password, confirmpassword) {
 
-    var status = ''
     //validation
     if(!email || !password) {
         throw Error('All fields must be filled')
@@ -70,7 +65,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({email, password: hash})
+    const user = await this.create({email, password: hash, verifiedStatus: false})
     user.verifiedStatus = false
     const token  = createToken(user._id)
     const link_verify = `https://www.smartmaintenance.in/signup/${token}`
