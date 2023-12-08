@@ -72,7 +72,10 @@ const Resetpassword = () => {
         setError(null)
         setPassword('')
         setConfirmPassword('')
-        navigate('/')
+        toast.success('Password Reset Successfull!')
+        setTimeout(() => {
+          navigate('/')
+        }, 5000);
       } catch(e) {
         throw new Error(e)
       }

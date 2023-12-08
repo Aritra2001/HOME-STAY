@@ -32,9 +32,6 @@ const Signup = () => {
     if(json.hasOwnProperty('token') === false) {
       toast.error(json.error)
     }
-    else {
-      toast.success('Verification Mail Send Successfully!')
-    }
   }
 
   const handelSubmit = async (e) => {
@@ -62,6 +59,7 @@ const Signup = () => {
     }
     if(response.ok) {
       try {
+        toast.success('Verification Mail Sent Successfully!')
         setError(null)
         setEmail('')
         setPassword('')
