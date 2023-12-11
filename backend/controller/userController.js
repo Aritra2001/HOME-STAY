@@ -95,7 +95,7 @@ const verifySignup = async (req, res) => {
         user.verifiedStatus = true
         user.save()
         }
-       res.status(200).json({user})
+       res.status(200).json({user: user.email})
     }
     catch(error) {
        res.status(400).json({error: error.message})
