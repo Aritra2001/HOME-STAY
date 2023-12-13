@@ -17,7 +17,7 @@ const SignupVerified = () => {
   const verifyEmail = async() => {
 
     const token = getToken()
-    const response = await fetch(`https://home-stay-beryl.vercel.app/api/users/verify-email/${token}`, {
+    const response = await fetch(`https://home-stay-aritra2001.vercel.app/api/users/verify-email/${token}`, {
 
     method: 'GET',
   })
