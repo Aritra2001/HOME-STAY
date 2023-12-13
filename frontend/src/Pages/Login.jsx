@@ -7,6 +7,7 @@ import { IconContext } from 'react-icons/lib';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext'
 
 
 
@@ -17,6 +18,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null)
   const navigate = useNavigate()
+  const { dispatch } = useAuthContext()
   var json = '';
 
   const togglePasswordVisibility = () => {
@@ -38,7 +40,7 @@ const Login = () => {
     e.preventDefault()
 
     const login = {email, password}
-
+    
     const response = await fetch('https://home-stay-beryl.vercel.app/api/users/login', {
 
       method: 'POST',
@@ -58,11 +60,12 @@ const Login = () => {
     }
     if(response.ok) {
       try {
+        localStorage.setItem('user', JSON.stringify(json))
+        dispatch({type: 'LOGIN', payload: json})
         setError(null)
         setEmail('')
         setPassword('')
         console.log('Successfull login')
-        navigate('/signup')
       } catch(e) {
         throw new Error(e)
       }
