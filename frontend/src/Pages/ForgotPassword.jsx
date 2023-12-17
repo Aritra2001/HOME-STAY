@@ -28,7 +28,7 @@ export const ForgotPassword = () => {
 
     const forgotpassword = { email }
 
-    const response = await fetch('https://home-stay-aritra2001.vercel.app/api/users/forgot-password', {
+    const response = await fetch('https://home-stay-tau.vercel.app/api/users/forgot-password', {
 
     method: 'POST',
     body: JSON.stringify(forgotpassword),
