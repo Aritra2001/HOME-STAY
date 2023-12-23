@@ -15,11 +15,11 @@ function App() {
   const { user, dispatch } = useAuthContext()
   const data = JSON.parse(localStorage.getItem('user'));
 
-  window.addEventListener('load', function (e) {
-    e.preventDefault();
+  const logout = () => {
     localStorage.removeItem('user')
     dispatch({type: 'LOGOUT'})
-  });
+  }
+  window.addEventListener('load', logout)
 
   return (
     <div className="App">
