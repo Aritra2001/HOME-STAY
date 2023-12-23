@@ -14,19 +14,6 @@ function App() {
   const { user } = useAuthContext()
   const data = JSON.parse(localStorage.getItem('user'));
 
-  function clearStorage() {
-
-    let session = sessionStorage.getItem('user');
-
-    if (session == null) {
-    
-        localStorage.removeItem('user');
-        window.location.reload()
-
-    }
-    sessionStorage.setItem('user', 1);
-}
-window.addEventListener('load', clearStorage);
   return (
     <div className="App">
       <BrowserRouter>
