@@ -13,10 +13,11 @@ import Admin from './Pages/Admin';
 function App() {
 
   const { user, dispatch } = useAuthContext()
-  const data = JSON.parse(sessionStorage.getItem('user'));
+  const data = JSON.parse(localStorage.getItem('user'));
 
   const logout = () => {
-    sessionStorage.removeItem('user')
+  
+    localStorage.removeItem('user');
     dispatch({type: 'LOGOUT'})
   }
   window.addEventListener('load', logout)

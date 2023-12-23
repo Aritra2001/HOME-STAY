@@ -58,7 +58,7 @@ const Login = () => {
     }
     if(response.ok) {
       try {
-        sessionStorage.setItem('user', JSON.stringify(json))
+        localStorage.setItem('user', JSON.stringify(json))
         dispatch({type: 'LOGIN', payload: json})
         setError(null)
         setEmail('')
