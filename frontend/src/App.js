@@ -17,7 +17,8 @@ function App() {
 
   const logout = () => {
 
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function(e) {
+    e.preventDefault() 
     localStorage.removeItem('user');
     dispatch({type: 'LOGOUT'})
     })
