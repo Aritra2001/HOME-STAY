@@ -34,7 +34,7 @@ const SignupVerified = () => {
                 Your email has been verified 
             </div>
             <div className='text-black text-base font-regular font-["Poppins"] mt-[3rem] max-sm:mt[-3rem] max-sm:text-[20px]'>
-            Your email id has been Verified!<br/>
+            Your email id {email} has been Verified!<br/>
             You can now login with this email id.
             </div>
             <a href="/"><button className="w-[119px] h-[39px] bg-teal-600 rounded-[7px] text-white text-xl font-normal font-['Lexend'] mt-[3rem]">LOGIN</button></a>
