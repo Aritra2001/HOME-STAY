@@ -6,7 +6,6 @@ import { FaRegEnvelope, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { IconContext } from 'react-icons/lib';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext'
 
 
@@ -17,7 +16,6 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null)
-  const navigate = useNavigate()
   const { dispatch } = useAuthContext()
   var json = '';
 

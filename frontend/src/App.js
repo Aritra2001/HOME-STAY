@@ -8,10 +8,11 @@ import Resetpassword from './Pages/Resetpassword';
 import SignupVerified from './Pages/SignupVerified';
 import { useAuthContext } from './hooks/useAuthContext'
 import Home from './Pages/Home';
+import Admin from './Pages/Admin';
 
 function App() {
   const { user } = useAuthContext()
-
+  const data = JSON.parse(localStorage.getItem('user'));
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,7 +34,7 @@ function App() {
         element={<SignupVerified />} />
         <Route
         path='/dashboard'
-        element={ user ? <Home /> : <Navigate to='/'/>} />
+        element={ user ? (data.email === process.env.REACT_APP_ADMIN_EMAIL ? <Admin /> : <Home />) : <Navigate to='/'/>} />
         <Route
         path='*'
         element={<Error />} />
