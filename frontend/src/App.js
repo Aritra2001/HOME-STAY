@@ -9,30 +9,20 @@ import SignupVerified from './Pages/SignupVerified';
 import { useAuthContext } from './hooks/useAuthContext'
 import Home from './Pages/Home';
 import Admin from './Pages/Admin';
+import { useEffect } from 'react';
 
 function App() {
 
   const { user, dispatch } = useAuthContext()
   const data = JSON.parse(localStorage.getItem('user'));
 
-  const logout = () => {
+  useEffect(() => {
+    window.addEventListener('load', function() {
+      localStorage.removeItem('user');
+      dispatch({type: 'LOGOUT'})
+      })
+  })
 
-    window.onbeforeunload = function (e) {
-      window.onunload = function () {
-              window.localStorage.isMySessionActive = "false";
-      }
-      return undefined;
-  };
-  
-  window.onload = function () {
-              window.localStorage.isMySessionActive = "true";
-              localStorage.removeItem('user')
-              dispatch({type: 'LOGOUT'})
-  };
-
-  }
-
-  logout()
   return (
     <div className="App">
       <BrowserRouter>
