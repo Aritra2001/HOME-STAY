@@ -11,8 +11,15 @@ import Home from './Pages/Home';
 import Admin from './Pages/Admin';
 
 function App() {
-  const { user } = useAuthContext()
+
+  const { user, dispatch } = useAuthContext()
   const data = JSON.parse(localStorage.getItem('user'));
+
+  window.addEventListener('load', function (e) {
+    e.preventDefault();
+    localStorage.removeItem('user')
+    dispatch({type: 'LOGOUT'})
+  });
 
   return (
     <div className="App">
