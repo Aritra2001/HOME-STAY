@@ -15,15 +15,12 @@ function App() {
   const { user, dispatch } = useAuthContext()
   const data = JSON.parse(localStorage.getItem('user'));
 
-  const localStorageClear = () => {
-    
-    window.addEventListener('load', function (e) {
-      e.preventDefault();
-      localStorage.removeItem('user')
-      dispatch({type: 'LOGOUT'})
-    });
-  }
-  localStorageClear()
+  window.addEventListener('load', function (e) {
+    e.preventDefault();
+    localStorage.removeItem('user')
+    dispatch({type: 'LOGOUT'})
+  });
+
   return (
     <div className="App">
       <BrowserRouter>
