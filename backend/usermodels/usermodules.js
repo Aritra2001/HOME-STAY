@@ -76,7 +76,7 @@ userSchema.statics.signup = async function(email, password, confirmpassword) {
     
     const user = await this.create({email, password: hash})
     const token  = createToken(user._id)
-    await this.findByIdAndUpdate(user._id, {verifyToken: token, verifyTokenExpire: Date.now() + 10 * 60 * 1000})
+    await this.findByIdAndUpdate(user._id, {verifyToken: token, verifiedStatus: false, verifyTokenExpire: Date.now() + 10 * 60 * 1000})
     const link_verify = `https://www.smartmaintenance.in/signup/${token}`
     
     await instanceResend.emails.send({
@@ -128,6 +128,10 @@ userSchema.statics.login = async function(email, password) {
 
     if(!user) {
         throw Error('Incorrect Email')
+    }
+
+    if(user.verifiedStatus === false) {
+        throw Error('Email Not Verified')
     }
 
     const match = await bcrypt.compare(password, user.password)
