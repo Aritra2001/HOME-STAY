@@ -16,12 +16,15 @@ function App() {
   const data = JSON.parse(localStorage.getItem('user'));
 
   const logout = () => {
-  
+
+    window.addEventListener('load', function() {
     localStorage.removeItem('user');
     dispatch({type: 'LOGOUT'})
-  }
-  window.addEventListener('load', logout)
+    })
 
+  }
+
+  logout()
   return (
     <div className="App">
       <BrowserRouter>
