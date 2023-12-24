@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 
 const Resetpassword = () => {
@@ -14,6 +15,7 @@ const Resetpassword = () => {
   const [confirmpassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const getToken = () => {
@@ -48,6 +50,7 @@ const Resetpassword = () => {
     const resetpassword = { password, confirmpassword }
 
     const token = getToken()
+    setLoading(true)
     const response = await fetch(`https://home-stay-git-main-aritra2001.vercel.app/api/users/reset-password/${token}`, {
 
     method: 'POST',
@@ -56,7 +59,7 @@ const Resetpassword = () => {
       'Content-Type': 'application/json'
     }
   })
-
+  setLoading(false)
   json = await response.json()
 
     notify()
@@ -103,7 +106,7 @@ const Resetpassword = () => {
         {!showconfirmPassword ? <FaRegEyeSlash onClick={toggleConfirmPasswordVisibility} color='#A0A0A0'/> : <FaRegEye onClick={toggleConfirmPasswordVisibility} color='#A0A0A0'/>}
         </IconContext.Provider>
         <ToastContainer />
-        <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[119px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[9vh] overflow-hidden max-sm:w-[420px] max-md:w-[420px">Submit</button>
+        <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[130px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[9vh] overflow-hidden max-sm:w-[420px] max-md:w-[420px" disabled={loading}>{loading ? <Loader /> : <>Submit</>}</button>
         {error && <div className='error'>{error}</div>}
       </div>
     </div>

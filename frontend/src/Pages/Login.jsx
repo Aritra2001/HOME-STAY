@@ -7,6 +7,7 @@ import { IconContext } from 'react-icons/lib';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuthContext } from '../hooks/useAuthContext'
+import Loader from '../components/Loader';
 
 
 
@@ -16,6 +17,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
   const { dispatch } = useAuthContext()
   var json = '';
 
@@ -38,7 +40,7 @@ const Login = () => {
     e.preventDefault()
 
     const login = {email, password}
-    
+    setLoading(true)
     const response = await fetch('https://home-stay-git-main-aritra2001.vercel.app/api/users/login', {
 
       method: 'POST',
@@ -47,6 +49,7 @@ const Login = () => {
         'Content-Type': 'application/json'
       }
     })
+    setLoading(false)
     json = await response.json()
     notify()
     if(!response) {
@@ -97,7 +100,7 @@ const Login = () => {
             </IconContext.Provider>
             <p className=" relative text-gray-500 text-[13px] font-normal font-['Poppins'] mt-[3vh] ml-[19rem] max-sm:ml-[12.5rem]"><a href="/forgotpassword">Forgot Password?</a></p>
             <ToastContainer />
-            <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[119px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[7vh] overflow-hidden max-sm:w-full max-md:w-full">Login</button>
+            <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[130px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[7vh] overflow-hidden max-sm:w-full max-md:w-full" disabled={loading}>{loading ? <Loader /> : <>Login</>}</button>
             {error && <div className='error'>{error}</div>}
             <p className="text-gray-500 text-[13px] font-normal font-['Poppins'] mt-[4vh]">Does not have an account? <a className="text-sky-900 text-[13px] font-normal font-['Poppins']" href='/signup'>Signup</a></p>
         </div>

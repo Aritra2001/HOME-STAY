@@ -4,12 +4,13 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { IconContext } from 'react-icons/lib';
 import { useState } from 'react';
 import { ToastContainer, toast } from "react-toastify";
-
+import Loader from '../components/Loader';
 
 export const ForgotPassword = () => {
 
   const [email, setEmail] = useState('')
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   var json = '';
 
@@ -27,7 +28,7 @@ export const ForgotPassword = () => {
     e.preventDefault()
 
     const forgotpassword = { email }
-
+    setLoading(true)
     const response = await fetch('https://home-stay-git-main-aritra2001.vercel.app/api/users/forgot-password', {
 
     method: 'POST',
@@ -36,7 +37,7 @@ export const ForgotPassword = () => {
       'Content-Type': 'application/json'
     }
   })
-
+  setLoading(false)
   json = await response.json()
     notify()
     if(!response) {
@@ -72,7 +73,7 @@ export const ForgotPassword = () => {
         <FaRegEnvelope color='#A0A0A0'/>
         </IconContext.Provider>
         <ToastContainer />
-        <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[119px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[9vh] overflow-hidden max-sm:w-[420px] max-md:w-[420px">Submit</button>
+        <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[130px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[9vh] overflow-hidden max-sm:w-[420px] max-md:w-[420px" disabled={loading}>{loading ? <Loader /> : <>Submit</>}</button>
         {error && <div className='error'>{error}</div>}
       </div>
     </div>

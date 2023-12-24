@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from '../assets/logo.svg'
 import { useState } from 'react';
+import Loader from '../components/Loader';
 
 export var json = '';
 
@@ -17,6 +18,7 @@ const Signup = () => {
   const [confirmpassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false);
   const [showconfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
 
@@ -38,7 +40,7 @@ const Signup = () => {
     e.preventDefault()
 
     const signup = {email, password, confirmpassword}
-
+    setLoading(true)
     const response = await fetch('https://home-stay-git-main-aritra2001.vercel.app/api/users/signup', {
 
       method: 'POST',
@@ -47,6 +49,7 @@ const Signup = () => {
         'Content-Type': 'application/json'
       }
     })
+    setLoading(false)
     json = await response.json()
 
     notify()
@@ -102,7 +105,7 @@ const Signup = () => {
             {!showconfirmPassword ? <FaRegEyeSlash onClick={toggleConfirmPasswordVisibility} color='#A0A0A0'/> : <FaRegEye onClick={toggleConfirmPasswordVisibility} color='#A0A0A0'/>}
             </IconContext.Provider>
             <ToastContainer />
-            <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[119px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[7vh] overflow-hidden max-sm:w-full max-md:w-full">Signup</button>
+            <button type='submit' id='login_btn' onClick={handelSubmit} className="w-[130px] h-[37px] bg-teal-600 rounded-[7px] text-white text-xl font-semibold font-['Lexend'] mt-[7vh] overflow-hidden max-sm:w-full max-md:w-full" disabled={loading}>{loading ? <Loader /> : <>Signup</>}</button>
             {error && <div className='error'>{error}</div>}
             <p className="text-gray-500 text-[13px] font-normal font-['Poppins'] mt-[4vh]">Already have an account? <a className="text-sky-900 text-[13px] font-normal font-['Poppins']" href='/'>Login</a></p>
         </div>
