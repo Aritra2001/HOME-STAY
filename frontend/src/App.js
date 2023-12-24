@@ -9,19 +9,11 @@ import SignupVerified from './Pages/SignupVerified';
 import { useAuthContext } from './hooks/useAuthContext'
 import Home from './Pages/Home';
 import Admin from './Pages/Admin';
-import { useEffect } from 'react';
 
 function App() {
 
-  const { user, dispatch } = useAuthContext()
+  const { user } = useAuthContext()
   const data = JSON.parse(localStorage.getItem('user'));
-
-  useEffect(() => {
-    window.addEventListener('load', function() {
-      localStorage.removeItem('user');
-      dispatch({type: 'LOGOUT'})
-      })
-  })
 
   return (
     <div className="App">
