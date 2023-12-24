@@ -35,3 +35,11 @@ button:disabled {
     animation: l1 1s infinite;
   }
   @keyframes l1 {to{transform: rotate(.5turn)}}
+
+  button:hover {
+    color: #000;
+    font-weight: 700;
+    background: transparent;
+    border: 2px solid #04696c;
+    transition: 0.2s;
+  }
