@@ -38,7 +38,7 @@ button:disabled {
 
   button:hover {
     color: #000;
-    font-weight: 700;
+    font-weight: 400;
     background: transparent;
     border: 2px solid #04696c;
     transition: 0.2s;
