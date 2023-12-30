@@ -55,5 +55,5 @@ select {
   background-image: url('./assets/dropdown.svg');
   background-repeat: no-repeat;
   background-position: 22.5rem; 
-  background-color: none;
+  background-color: #FFFFFF !important;
 }
