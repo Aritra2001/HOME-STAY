@@ -22,7 +22,7 @@ const SupportForm = () => {
     const [error, setError] = useState(null)
 
     const notify = () => {
-        if(json.hasOwnProperty('mssg') === true) {
+        if(json.hasOwnProperty('message') === true) {
           toast.success('Form Submitted Successfully!')
         }
         else {
