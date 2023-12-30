@@ -35,7 +35,8 @@ const SupportForm = () => {
 
         const support = { name, phone, priority, category, description }
         setLoading(true)
-        const response = await fetch('https://home-stay-git-main-aritra2001.vercel.app/api/support', {
+        // https://home-stay-git-main-aritra2001.vercel.app
+        const response = await fetch('http://localhost:3333/api/support', {
     
           method: 'POST',
           body: JSON.stringify(support),
@@ -58,9 +59,9 @@ const SupportForm = () => {
           try {
             setError(null)
             setName('')
-            setPhone(null)
-            setPriority(null)
-            setCategory(null)
+            setPhone('')
+            setPriority('')
+            setCategory('')
             setDesc('')
             console.log('Support form submit Success!')
           } catch(e) {
@@ -93,7 +94,7 @@ const SupportForm = () => {
     <img src={phoneIcon} alt="Phone Icon" className=' w-[20px] h-[20px] absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px] max-xl:mx-[17px] max-xl:mx-[47px]' />
 
     <select name="priority" aria-label='your priority level' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[17.25px] indent-[4.5rem] text-[13px] font-normal font-['Poppins'] font-bold max-sm:w-[320px]" value={priority} onChange={(e)=>setPriority(e.target.value)} required style={{ color: priority ? "black" : "#9ca3af" }}>
-    <option value="none">Select your Priority Level</option>
+    <option value="null">Select your Priority Level</option>
     <option value="low">Low</option>
     <option value="medium">Medium</option>
     <option value="high">High</option>
@@ -102,7 +103,7 @@ const SupportForm = () => {
     <img src={priorityImg} alt="priority Icon" className='w-[20px] h-[20px] absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px] max-xl:mx-[17px] max-xl:mx-[47px]' />
 
     <select name="category" aria-label='your category' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[17.25px] indent-[4.5rem] text-[13px] font-normal font-['Poppins'] max-sm:w-[320px]" value={category} onChange={(e)=>setCategory(e.target.value)} required style={{ color: category ? "black" : "#9ca3af" }}>
-    <option value="none">Select your Category</option>
+    <option value="null">Select your Category</option>
     <option value="account acccess">Account Access</option>
     <option value="setup">Setup</option>
     <option value="payments">Payments</option>

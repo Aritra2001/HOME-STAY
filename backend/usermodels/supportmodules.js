@@ -25,4 +25,4 @@ const supportSchema = new Schema({
     }
 }, {timestamps: true})
 
-module.exports = mongoose.model('Support', supportSchema)
+module.exports = mongoose.model('SupportQuery', supportSchema)
