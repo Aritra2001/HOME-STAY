@@ -35,8 +35,8 @@ const SupportForm = () => {
 
         const support = { name, phone, priority, category, description }
         setLoading(true)
-        // https://home-stay-git-main-aritra2001.vercel.app
-        const response = await fetch('http://localhost:3333/api/support', {
+
+        const response = await fetch('https://home-stay-git-main-aritra2001.vercel.app/api/support', {
     
           method: 'POST',
           body: JSON.stringify(support),
