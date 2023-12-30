@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom'
+import {BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Error from './Pages/Error';
@@ -9,6 +9,7 @@ import SignupVerified from './Pages/SignupVerified';
 import { useAuthContext } from './hooks/useAuthContext'
 import Home from './Pages/Home';
 import Admin from './Pages/Admin';
+import SupportForm from './Pages/SupportForm';
 
 function App() {
 
@@ -37,6 +38,9 @@ function App() {
         <Route
         path='/dashboard'
         element={ user ? (data.email === process.env.REACT_APP_ADMIN_EMAIL ? <Admin /> : <Home />) : <Navigate to='/'/>} />
+        <Route
+        path='dashboard/support'
+        element={user ? <SupportForm /> : <Login />} />
         <Route
         path='*'
         element={<Error />} />

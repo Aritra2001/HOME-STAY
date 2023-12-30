@@ -42,3 +42,26 @@ button:disabled {
     border: 2px solid #04696c;
     transition: 0.2s;
   }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+select {
+  appearance: none;
+  background-image: url('./assets/dropdown.svg');
+  background-repeat: no-repeat;
+  background-position: 22.5rem; 
+  color: #7A868F;
+}
+option{
+  
+}
+@media only screen and (max-width: 640px) {
+  select {
+    background-position: 15.5rem; 
+  } 
+}
