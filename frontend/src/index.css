@@ -56,9 +56,6 @@ select {
   background-repeat: no-repeat;
   background-position: 22.5rem; 
 }
-option{
-  
-}
 @media only screen and (max-width: 640px) {
   select {
     background-position: 15.5rem; 
