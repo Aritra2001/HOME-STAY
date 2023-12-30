@@ -93,7 +93,7 @@ const SupportForm = () => {
     <div className='w-[1px] h-[35.858px] border border-neutral-200 ml-[7.5rem] mt-[-6.8vh] absolute max-sm:mx-[47px] max-md:mx-[47px] max-lg:mx-[47px]'></div>
     <img src={phoneIcon} alt="Phone Icon" className=' w-[20px] h-[20px] absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px] max-xl:mx-[17px] max-xl:mx-[47px]' />
 
-    <select name="priority" aria-label='your priority level' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[17.25px] indent-[4.5rem] text-[13px] font-normal font-['Poppins'] font-bold max-sm:w-[320px]" value={priority} onChange={(e)=>setPriority(e.target.value)} required style={{ color: priority ? "black" : "#9ca3af" }}>
+    <select name="priority" aria-label='your priority level' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[17.25px] indent-[4.5rem] text-[13px] font-normal font-['Poppins'] font-bold max-sm:w-[320px] max-sm:bg-[17rem]" value={priority} onChange={(e)=>setPriority(e.target.value)} required style={{ color: priority ? "black" : "#9ca3af" }}>
     <option value="null">Select your Priority Level</option>
     <option value="low">Low</option>
     <option value="medium">Medium</option>
@@ -102,7 +102,7 @@ const SupportForm = () => {
     <div className='w-[1px] h-[35.858px] border border-neutral-200 ml-[7.5rem] mt-[-6.8vh] absolute max-sm:mx-[47px] max-md:mx-[47px] max-lg:mx-[47px]'></div>
     <img src={priorityImg} alt="priority Icon" className='w-[20px] h-[20px] absolute ml-[5.2rem] mt-[-40px] max-sm:mx-[17px] max-md:mx-[17px] max-lg:mx-[17px] max-xl:mx-[17px] max-xl:mx-[47px]' />
 
-    <select name="category" aria-label='your category' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[17.25px] indent-[4.5rem] text-[13px] font-normal font-['Poppins'] max-sm:w-[320px]" value={category} onChange={(e)=>setCategory(e.target.value)} required style={{ color: category ? "black" : "#9ca3af" }}>
+    <select name="category" aria-label='your category' className="w-[423px] h-[62.75px] rounded-[10px] border border-stone-300 relative shrink mt-[17.25px] indent-[4.5rem] text-[13px] font-normal font-['Poppins'] max-sm:w-[320px] max-sm:bg-[17rem]" value={category} onChange={(e)=>setCategory(e.target.value)} required style={{ color: category ? "black" : "#9ca3af" }}>
     <option value="null">Select your Category</option>
     <option value="account acccess">Account Access</option>
     <option value="setup">Setup</option>
