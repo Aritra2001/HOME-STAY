@@ -7,7 +7,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@700&family=Patrick+Hand+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@700&family=Patrick+Hand+SC&family=Poppins:wght@400&display=swap');
 
-
+::selection{
+  background: #91e5ba;
+}
 
 .verified {
     background: #FFF;
