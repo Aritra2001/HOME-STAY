@@ -18,7 +18,7 @@ const support = async (req, res) => {
             throw Error('Name should be entered properly')
         }
 
-        if(phone.length < 10 || phone.length > 12 || isnum) {
+        if(phone.length < 10 && phone.length >= 11 && isnum === true) {
             throw Error('Enter a valid Phone Number')
         }
 
