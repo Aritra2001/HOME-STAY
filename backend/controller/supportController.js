@@ -7,6 +7,7 @@ const support = async (req, res) => {
     const { name, phone, priority, category, description } = req.body
 
     var isnum =  /^\d+$/.test(phone);
+    
     try{
 
         if(!name || !phone || !priority || !category || !description) {
@@ -17,7 +18,7 @@ const support = async (req, res) => {
             throw Error('Name should be entered properly')
         }
 
-        if(phone.length < 10 && phone.length > 12 && isnum) {
+        if(phone.length < 10 || phone.length > 12 || isnum) {
             throw Error('Enter a valid Phone Number')
         }
 
@@ -27,6 +28,10 @@ const support = async (req, res) => {
 
         if(category === 'null') {
             throw Error('Select category from the list')
+        }
+
+        if(description.length < 10) {
+            throw Error('Description have to of minimum 10 words')
         }
 
         await User.create({ name, phone, priority, category, description })
