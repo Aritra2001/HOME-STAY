@@ -1,6 +1,20 @@
 import './toggle.css'
+import { useNavigate } from 'react-router-dom'
 
 const Toggle = () => {
+
+  const navigate = useNavigate()
+
+  const handelRoutes = () => {
+
+    if(window.location.pathname === '/signup') {
+      navigate('/')
+    }
+    else {
+      navigate('/signup')
+    }
+
+  }
 
   const styles = {
     sign_up: {
@@ -32,8 +46,8 @@ const Toggle = () => {
       <ul>
 
         <li>
-        <div className='sign_up'style={SetSignupBackground()}><li>Signup</li></div>
-        <div className='log_in' style={SetLoginBackground()}><li>Login</li></div>
+        <div className='sign_up'style={SetSignupBackground()}><li onClick={handelRoutes} style={{cursor: 'pointer'}}>Signup</li></div>
+        <div className='log_in' style={SetLoginBackground()}><li onClick={handelRoutes} style={{cursor: 'pointer'}}>Login</li></div>
         </li>
 
       </ul>
