@@ -8,6 +8,7 @@ import categoryImg from '../assets/category.svg'
 import Description from '../assets/description.svg'
 import Loader from '../components/Loader';
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 var json = ''
 
@@ -20,6 +21,7 @@ const SupportForm = () => {
     const [description, setDesc] = useState('')
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const notify = () => {
         if(json.hasOwnProperty('message') === true) {
@@ -64,6 +66,9 @@ const SupportForm = () => {
             setCategory('')
             setDesc('')
             console.log('Support form submit Success!')
+            setTimeout(() => {
+              navigate('/dashboard')
+            }, 5000);
           } catch(e) {
             throw new Error(e)
           }
