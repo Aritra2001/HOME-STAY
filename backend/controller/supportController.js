@@ -13,11 +13,11 @@ const support = async (req, res) => {
             throw Error('All fields must be filled')
         }
 
-        if(name.length <= 1 || name.matches === ' '){
+        if(name.length <= 1){
             throw Error('Name should be entered properly')
         }
 
-        if(phone.length < 10 && phone > 12 && isnum) {
+        if(phone.length < 10 && phone.length > 12 && isnum) {
             throw Error('Enter a valid Phone Number')
         }
 
