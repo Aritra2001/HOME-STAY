@@ -7,7 +7,6 @@ const support = async (req, res) => {
     const { name, phone, priority, category, description } = req.body
 
     var isnum =  /^\d+$/.test(phone);
-    
     try{
 
         if(!name || !phone || !priority || !category || !description) {
@@ -18,7 +17,7 @@ const support = async (req, res) => {
             throw Error('Name should be entered properly')
         }
 
-        if(phone.length < 10 && phone.length >= 11 && isnum === true) {
+        if((phone.length < 10 || phone.length >= 11) && isnum === true) {
             throw Error('Enter a valid Phone Number')
         }
 
